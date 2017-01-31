@@ -14,7 +14,7 @@ defmodule TgClient.Utils do
   @spec command(non_neg_integer, String.t) :: String.t
   def command(phone, socket_path) do
     init_session_env(phone)
-    "export TELEGRAM_HOME=#{session_env_path(phone)} && #{daemon} #{cli_arguments} -S #{socket_path} -U root"
+    "export TELEGRAM_HOME=#{session_env_path(phone)} && #{daemon} #{cli_arguments} -S #{socket_path} -U #{session_user()}"
   end
 
   defp cli_arguments do
@@ -132,6 +132,14 @@ defmodule TgClient.Utils do
 
   defp server_key do
     Application.get_env(:tg_client, :key)
+  end
+
+  def session_user() do
+    if u = Application.get_env(:tg_client, :user) do
+      "-U #{u}"
+    else
+      ""
+    end
   end
 
 end
