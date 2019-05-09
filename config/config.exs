@@ -1,7 +1,7 @@
 use Mix.Config
 
-config :tg_client,
-  daemon: "/usr/local/telegram-cli",
+config :tg_client_2,
+       daemon: "/usr/local/telegram-cli",
   key: "/usr/local/share/telegram-cli/tg-server.pub",
   session_env_path: "/tmp/telegram-cli/sessions",
   port_range: 2000..2010,

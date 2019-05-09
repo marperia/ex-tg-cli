@@ -6,19 +6,21 @@ A Elixir wrapper that communicates with the Telegram-CLI.
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
-* Add `tg_client` to your list of dependencies in `mix.exs`:
+* Add `tg_client_2` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:tg_client, "~> 0.3.0"]
+  [
+  {:tg_client_2, "~> 0.4"}
+  ]
 end
 ```
 
-* Ensure `tg_client` is started before your application:
+* Ensure `tg_client_2` is started before your application:
 
 ```elixir
 def application do
-  [applications: [:tg_client]]
+  [applications: [:tg_client_2]]
 end
 ```
 
@@ -41,14 +43,14 @@ end
 * Set config.
 
 ```elixir
-config :tg_client,
-  daemon: "/usr/local/telegram-cli",
-  key: "/usr/local/share/telegram-cli/tg-server.pub",
-  session_env_path: "/tmp/telegram-cli/sessions",
+config :tg_client_2,
+  daemon: "/home/user/tg/bin/telegram-cli",
+  key: "/home/user/tg/tg-server.pub",
+  session_env_path: "/home/user/.telegram-cli",
   default_pool_size: 5,
-  default_pool_max_overflow: 10,
+  default_pool_max_overflow: 40,
   pool_name: :event_handler,
-  event_handler: {TgClient.Event.Handler, size: 10, max_overflow: 10}
+  event_handler: {TgClient.Event.Handler, size: 10, max_overflow: 20}
 ```
 
 ## Authorization
@@ -250,19 +252,4 @@ when response is:
       \"phone\":\"79251008050\"
    }
 }
-```
-
-## Configuration
-
-* Set config or pass default attributes
-
-```elixir
-config :tg_client,
-  daemon: "/usr/local/telegram-cli",
-  key: "/usr/local/share/telegram-cli/tg-server.pub",
-  session_env_path: "/tmp/telegram-cli/sessions",
-  default_pool_size: 5,
-  default_pool_max_overflow: 10,
-  pool_name: :event_handler,
-  event_handler: {TgClient.Event.Handler, size: 10, max_overflow: 10}
 ```

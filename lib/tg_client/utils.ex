@@ -96,26 +96,26 @@ defmodule TgClient.Utils do
   """
   @spec pool_name :: atom
   def pool_name do
-    Application.get_env(:tg_client, :pool_name)
+    Application.get_env(:tg_client_2, :pool_name)
   end
 
   defp event_handler do
-    Application.get_env(:tg_client, :event_handler)
+    Application.get_env(:tg_client_2, :event_handler)
   end
 
   defp default_pool_size do
-    Application.get_env(:tg_client, :default_pool_size)
+    Application.get_env(:tg_client_2, :default_pool_size)
   end
 
   defp default_pool_max_overflow do
-    Application.get_env(:tg_client, :default_pool_max_overflow)
+    Application.get_env(:tg_client_2, :default_pool_max_overflow)
   end
 
   defp session_env_path(phone) do
     "#{session_env_path}/#{phone_hash(phone)}"
   end
   defp session_env_path do
-    Application.get_env(:tg_client, :session_env_path)
+    Application.get_env(:tg_client_2, :session_env_path)
   end
 
 
@@ -127,15 +127,15 @@ defmodule TgClient.Utils do
   end
 
   defp daemon do
-    Application.get_env(:tg_client, :daemon)
+    Application.get_env(:tg_client_2, :daemon)
   end
 
   defp server_key do
-    Application.get_env(:tg_client, :key)
+    Application.get_env(:tg_client_2, :key)
   end
 
   def session_user() do
-    if u = Application.get_env(:tg_client, :user) do
+    if u = Application.get_env(:tg_client_2, :user) do
       "-U #{u}"
     else
       ""

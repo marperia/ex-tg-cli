@@ -2,15 +2,17 @@ defmodule TgClient.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :tg_client,
-     version: "0.3.0",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps(),
-     aliases: aliases(),
-     description: description(),
-     package: package()]
+    [
+      app: :tg_client_2,
+      version: "0.0.1",
+      elixir: "~> 1.3",
+      build_embedded: Mix.env == :dev,
+      start_permanent: Mix.env == :prod,
+      deps: deps(),
+      aliases: aliases(),
+      description: description(),
+      package: package()
+    ]
   end
 
   def application do
@@ -21,12 +23,14 @@ defmodule TgClient.Mixfile do
   end
 
   defp deps do
-    [{:ex_doc, ">= 0.0.0", only: :dev},
-     {:porcelain, "~> 2.0"},
-     {:gproc, "~> 0.5.0"},
-     {:poison, "~> 3.0"},
-     {:afunix,  github: "tonyrog/afunix"},
-     {:poolboy, "~> 1.5"},]
+    [
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:porcelain, "~> 2.0"},
+      {:gproc, "~> 0.5.0"},
+      {:poison, "~> 3.0"},
+      {:afunix, github: "tonyrog/afunix", app: false},
+      {:poolboy, "~> 1.5"},
+    ]
   end
 
   defp aliases do
@@ -38,10 +42,14 @@ defmodule TgClient.Mixfile do
   end
 
   defp package do
-    [name: :tg_client,
-     files: ["lib", "mix.exs"],
-     maintainers: ["Andrey Noskov", "Alexander Malaev"],
-     licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/ccsteam/ex-telegram-client"}]
+    [
+      name: :tg_client_2,
+      files: ["lib", "mix.exs"],
+      maintainers: ["Andrey Noskov", "Alexander Malaev", "Marperia"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/marperia/ex-tg-cli"
+      }
+    ]
   end
 end
